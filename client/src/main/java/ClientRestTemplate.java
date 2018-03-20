@@ -28,7 +28,7 @@ public class ClientRestTemplate {
 
         executor.shutdown();
 
-        while (!executor.isTerminated()){    //пока решил так остановить вывод результатов до завершения потоков
+        while (!executor.isTerminated()){
 
         }
         stopTimer = System.currentTimeMillis();
@@ -39,7 +39,7 @@ public class ClientRestTemplate {
 
         loger.info("Count Query : " + atomicInteger.get());
 
-        loger.info("Average nuber of request : " + atomicInteger.get()/((stopTimer - startTimer)/1000));
+        loger.info("Average nuber of request : " + atomicInteger.get() / ((stopTimer - startTimer) / 1000));
 
 
 

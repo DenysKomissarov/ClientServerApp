@@ -9,6 +9,7 @@
 	<modules>
 		<module>client</module>
         <module>server</module>
+        <module>springinaction1</module>
     </modules>
 	<packaging>pom</packaging>
 

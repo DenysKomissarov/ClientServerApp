@@ -13,7 +13,7 @@ public class RestClass{
 
     public static final long timeStart=System.currentTimeMillis();
 
-    @RequestMapping("/request")     //////////////если поместить над классом, тогда не работает
+    @RequestMapping("/request")
     @ResponseBody
     public String getInfo(){
         SheduledStatistic.tempCountRequest.incrementAndGet();

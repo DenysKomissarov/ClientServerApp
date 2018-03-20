@@ -21,10 +21,10 @@ public class SheduledStatistic {
 
         long curentTime = System.currentTimeMillis() - RestClass.timeStart;
 
-        if (tempCountRequest.get()!=0&&countRequest<2000000) {
+        if (tempCountRequest.get() != 0 && countRequest < 2000000) {
 
             this.countRequest += tempCountRequest.get();
-            loger.info("Average count of requests in one second: "+(tempCountRequest.get()/(curentTime/1000)));
+            loger.info("Average count of requests in one second: "+(countRequest /(curentTime / 1000)));
             tempCountRequest.set(0);
 
         }
