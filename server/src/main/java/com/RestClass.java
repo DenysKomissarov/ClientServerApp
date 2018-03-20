@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestClass{
     //private final org.slf4j.Logger loger = LoggerFactory.getLogger(RestClass.class);
 
-    public static final long timeStart=System.currentTimeMillis();
+    public static long timeStart=0;
 
     @RequestMapping("/request")
     @ResponseBody
     public String getInfo(){
-        SheduledStatistic.tempCountRequest.incrementAndGet();
+        if (timeStart==0){
+            timeStart= System.currentTimeMillis();
+        }
+        ScheduledStatistic.TEMPCOUNTREQUEST.incrementAndGet();
         return generateString();
     }
 

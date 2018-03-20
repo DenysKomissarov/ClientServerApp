@@ -14,12 +14,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ServerApplication {
 
 
-	private  static final org.slf4j.Logger loger = LoggerFactory.getLogger(ServerApplication.class);
+	private  static org.slf4j.Logger logger = LoggerFactory.getLogger(ServerApplication.class);
 	//public static Integer tempCountRequest = 0;
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
-		loger.info("####### Start Server  #######");
+		logger.info("####### Start Server  #######");
 	}
 }

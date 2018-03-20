@@ -10,10 +10,10 @@ import java.util.logging.Logger;
 
 @Component
 @EnableScheduling
-public class SheduledStatistic {
+public class ScheduledStatistic {
 
-    private final org.slf4j.Logger loger = LoggerFactory.getLogger(SheduledStatistic.class);
-    public final static AtomicInteger tempCountRequest = new AtomicInteger(0);          /////temp  - потому, что я его обнуляю каждую секунду
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(ScheduledStatistic.class);
+    public final static AtomicInteger TEMPCOUNTREQUEST = new AtomicInteger(0);          /////temp  - потому, что я его обнуляю каждую секунду
     private int countRequest = 0;
 
     @Scheduled(fixedRate = 1000)
@@ -21,11 +21,11 @@ public class SheduledStatistic {
 
         long curentTime = System.currentTimeMillis() - RestClass.timeStart;
 
-        if (tempCountRequest.get() != 0 && countRequest < 2000000) {
+        if (TEMPCOUNTREQUEST.get() != 0 && countRequest < 2000000) {
 
-            this.countRequest += tempCountRequest.get();
-            loger.info("Average count of requests in one second: "+(countRequest /(curentTime / 1000)));
-            tempCountRequest.set(0);
+            this.countRequest += TEMPCOUNTREQUEST.get();
+            logger.info("Average count of requests in one second: "+(countRequest /(curentTime / 1000)));
+            TEMPCOUNTREQUEST.set(0);
 
         }
     }

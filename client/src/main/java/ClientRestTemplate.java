@@ -39,7 +39,7 @@ public class ClientRestTemplate {
 
         loger.info("Count Query : " + atomicInteger.get());
 
-        loger.info("Average nuber of request : " + atomicInteger.get() / ((stopTimer - startTimer) / 1000));
+        loger.info("Average number of request : " + atomicInteger.get() / ((stopTimer - startTimer) / 1000));
 
 
 

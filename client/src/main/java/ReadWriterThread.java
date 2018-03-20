@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 public class ReadWriterThread implements Runnable {
-    private final Logger loger = LoggerFactory.getLogger(ReadWriterThread.class);
+    private Logger loger = LoggerFactory.getLogger(ReadWriterThread.class);
     private RestTemplate restTemplate = new RestTemplate();
     private final String URL = "http://localhost:8080/request";
 
