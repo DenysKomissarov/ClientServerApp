@@ -2,4 +2,5 @@
  .idea *.iml
 
 # folder target
-target/ 
+client/target/ 
+server/target/ 
