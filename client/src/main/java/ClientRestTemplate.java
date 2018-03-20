@@ -9,9 +9,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ClientRestTemplate {
 
     private  static final org.slf4j.Logger loger = LoggerFactory.getLogger(ClientRestTemplate.class);
-
-
-    //public static final ExecutorService executor2 = Executors.newFixedThreadPool(1);
     //public static final AtomicBoolean isExecutorStoped = new AtomicBoolean(false); // если останавливать по времени
     public static final AtomicInteger atomicInteger = new AtomicInteger(0);
 
@@ -23,14 +20,15 @@ public class ClientRestTemplate {
         loger.info("start application");
         long startTimer = System.currentTimeMillis();
         long stopTimer;
+
         for (int i = 0; i < 200; i ++ ){
-            ReadWriterThread readWriterThread = new ReadWriterThread(i);
+            ReadWriterThread readWriterThread = new ReadWriterThread();
             executor.submit(readWriterThread);
         }
 
         executor.shutdown();
 
-        while (!executor.isTerminated()){
+        while (!executor.isTerminated()){    //пока решил так остановить вывод результатов до завершения потоков
 
         }
         stopTimer = System.currentTimeMillis();
@@ -40,6 +38,11 @@ public class ClientRestTemplate {
         loger.info(" Query processing time : " + formating.format(stopTimer - startTimer));
 
         loger.info("Count Query : " + atomicInteger.get());
+
+        loger.info("Average nuber of request : " + atomicInteger.get()/((stopTimer - startTimer)/1000));
+
+
+
 
 
 

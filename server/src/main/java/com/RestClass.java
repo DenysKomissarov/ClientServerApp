@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 
 public class RestClass{
-    private final org.slf4j.Logger loger = LoggerFactory.getLogger(RestClass.class);
+    //private final org.slf4j.Logger loger = LoggerFactory.getLogger(RestClass.class);
+
+    public static final long timeStart=System.currentTimeMillis();
 
     @RequestMapping("/request")     //////////////если поместить над классом, тогда не работает
     @ResponseBody
@@ -19,7 +21,7 @@ public class RestClass{
     }
 
 
-    public String generateString() {
+    private String generateString() {
         String result = RandomStringUtils.randomAlphabetic(200);
         //System.out.println(Thread.currentThread().getName());
         return  result;
