@@ -6,9 +6,10 @@ import org.springframework.web.client.RestTemplate;
 
 
 public class ReadWriterThread implements Runnable {
-    private  static final Logger loger = LoggerFactory.getLogger(ReadWriterThread.class);
+    private final Logger loger = LoggerFactory.getLogger(ReadWriterThread.class);
     private RestTemplate restTemplate;
     private int num;
+    public final String URL = "http://localhost:8080/request";
 
     public ReadWriterThread(int num) {
         this.restTemplate = new RestTemplate();
@@ -20,12 +21,11 @@ public class ReadWriterThread implements Runnable {
 
         int i = 0;
         while(i < 100){
-
 //            if(ClientRestTemplate.isExecutorStoped.get())         // если останавливать по времени
 //                break;
             try {
-                ResponseEntity<String> infoResponce = restTemplate.getForEntity(ClientRestTemplate.URL,String.class);
-                loger.warn("Thread " + num + " :  " + infoResponce.getBody());
+                ResponseEntity<String> infoResponce = restTemplate.getForEntity(URL,String.class);
+                loger.debug("Thread " + num + " :  " + infoResponce.getBody());
                 i++;
                 ClientRestTemplate.atomicInteger.incrementAndGet();
             }catch(ResourceAccessException ex){

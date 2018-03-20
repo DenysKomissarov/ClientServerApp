@@ -9,14 +9,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ClientRestTemplate {
 
     private  static final org.slf4j.Logger loger = LoggerFactory.getLogger(ClientRestTemplate.class);
-    public static final String URL = "http://localhost:8080/request";
-    public static final ExecutorService executor = Executors.newCachedThreadPool();
+
+
     //public static final ExecutorService executor2 = Executors.newFixedThreadPool(1);
     //public static final AtomicBoolean isExecutorStoped = new AtomicBoolean(false); // если останавливать по времени
     public static final AtomicInteger atomicInteger = new AtomicInteger(0);
 
     public static void main(String[] args) {
 
+        ExecutorService executor = Executors.newCachedThreadPool();
+
+
+        loger.info("start application");
         long startTimer = System.currentTimeMillis();
         long stopTimer;
         for (int i = 0; i < 200; i ++ ){

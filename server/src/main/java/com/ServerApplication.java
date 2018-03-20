@@ -1,5 +1,6 @@
 package com;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -12,12 +13,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SpringBootApplication(scanBasePackages = "com")
 public class ServerApplication {
 
-	private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ServerApplication.class.getName());
+
+	private  static final org.slf4j.Logger loger = LoggerFactory.getLogger(ServerApplication.class);
 	//public static Integer tempCountRequest = 0;
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
-		logger.info("####### Start Server  #######");
+		loger.info("####### Start Server  #######");
 	}
 }

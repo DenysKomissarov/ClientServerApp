@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @EnableScheduling
 public class SheduledStatistic {
 
-    private  static final org.slf4j.Logger loger = LoggerFactory.getLogger(SheduledStatistic.class);
+    private final org.slf4j.Logger loger = LoggerFactory.getLogger(SheduledStatistic.class);
     public final static AtomicInteger tempCountRequest = new AtomicInteger(0);          /////temp  - потому, что я его обнуляю каждую секунду
     private int countRequest = 0;
     private int countSecond = 0;
