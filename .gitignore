@@ -1,6 +1,3 @@
-# idea files 
- .idea *.iml
-
-# folder target
-client/target/ 
-server/target/ 
+ .idea
+ *.iml
+target
