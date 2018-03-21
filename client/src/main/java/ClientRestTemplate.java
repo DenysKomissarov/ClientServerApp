@@ -1,4 +1,7 @@
+import impls.ResourcesClass;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutorService;
@@ -14,6 +17,10 @@ public class ClientRestTemplate {
 
     public static void main(String[] args) {
 
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("context.xml");
+        ResourcesClass resources = (ResourcesClass) applicationContext.getBean("resources");
+        String url = resources.getUrl();
+
         ExecutorService executor = Executors.newCachedThreadPool();
 
 
@@ -22,7 +29,7 @@ public class ClientRestTemplate {
         long stopTimer;
 
         for (int i = 0; i < 200; i ++ ){
-            ReadWriterThread readWriterThread = new ReadWriterThread();
+            ReadWriterThread readWriterThread = new ReadWriterThread(url);
             executor.submit(readWriterThread);
         }
 

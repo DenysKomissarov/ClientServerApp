@@ -24,9 +24,12 @@ public class ScheduledStatistic {
         if (TEMPCOUNTREQUEST.get() != 0 && countRequest < 2000000) {
 
             this.countRequest += TEMPCOUNTREQUEST.get();
-            logger.info("Average count of requests in one second: "+(countRequest /(curentTime / 1000)));
+            try{
+                logger.info("Average count of requests in one second: "+(countRequest /(curentTime / 1000)));
+            }catch ( ArithmeticException ex){
+                logger.info("Devided by zero ");
+            }
             TEMPCOUNTREQUEST.set(0);
-
         }
     }
 }
